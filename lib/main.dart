@@ -1,24 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import 'task.dart';
+
 void main() {
   runApp(const TaskFlowApp());
-}
-
-class Task {
-  const Task({
-    required this.id,
-    required this.title,
-    required this.description,
-    required this.priority,
-    required this.isCompleted,
-  });
-
-  final int id;
-  final String title;
-  final String description;
-  final String priority;
-  final bool isCompleted;
 }
 
 const demoTasks = [
@@ -28,6 +14,7 @@ const demoTasks = [
     description: 'Estructurar capas y componentes principales',
     priority: 'Alta',
     isCompleted: true,
+    userId: 1,
   ),
   Task(
     id: 2,
@@ -35,6 +22,7 @@ const demoTasks = [
     description: 'Construir tarjetas con ListView.builder',
     priority: 'Alta',
     isCompleted: false,
+    userId: 1,
   ),
   Task(
     id: 3,
@@ -42,6 +30,7 @@ const demoTasks = [
     description: 'Preparar flujo hacia el detalle por id',
     priority: 'Media',
     isCompleted: false,
+    userId: 1,
   ),
   Task(
     id: 4,
@@ -49,6 +38,7 @@ const demoTasks = [
     description: 'Integrar endpoints de sincronización remota',
     priority: 'Alta',
     isCompleted: false,
+    userId: 1,
   ),
   Task(
     id: 5,
@@ -56,15 +46,13 @@ const demoTasks = [
     description: 'Garantizar calidad con flutter test y analyze',
     priority: 'Baja',
     isCompleted: true,
+    userId: 1,
   ),
 ];
 
 final appRouter = GoRouter(
   routes: [
-    GoRoute(
-      path: '/',
-      builder: (context, state) => const TaskListScreen(),
-    ),
+    GoRoute(path: '/', builder: (context, state) => const TaskListScreen()),
     GoRoute(
       path: '/task/:id',
       builder: (context, state) {
